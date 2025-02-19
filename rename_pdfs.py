@@ -10,7 +10,7 @@ def extract_meaningful_text(pdf_path, num_words=5):
         doc.close()
         
         # Clean and extract meaningful words
-        words = re.findall(r"\b[A-Za-z0-9]+\b", text)
+        words = [word for word in re.findall(r"\b[A-Za-z]{5,}\b", text)]
         if words:
             return "_".join(words[:num_words])
     except Exception as e:
